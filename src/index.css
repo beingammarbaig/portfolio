@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+a:hover {
+  color: inherit; /* This will inherit the color from its parent */
+  text-decoration: none; /* Removes the underline on hover */
+}
+
+Link:hover {
+  color: inherit; /* This will inherit the color from its parent */
+  text-decoration: none; /* Removes the underline on hover */
+}
+
+.progress-bar{
+  background-color: white;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.progress-bar div{
+  height: 10px;
+  border-radius: 5px;
+  width: 0%;
+  background-color: red;
+}
+
+.teaching{
+  background: linear-gradient(
+    92.23deg,
+    #ff56f6 21.43%,
+    #b936ee 50.63%,
+    #3bace2 100%,
+    #406aff 117.04%
+  );
+  animation: teaching 2s linear forwards;
+}
+
+@keyframes teaching{
+  100%{
+    width: 90%;
+  }
+}
+
+.research{
+  background: linear-gradient(
+    92.23deg,
+    #ff56f6 21.43%,
+    #b936ee 50.63%,
+    #3bace2 100%,
+    #406aff 117.04%
+  );
+  animation: research 2s linear forwards;
+}
+
+@keyframes research{
+  100%{
+    width: 80%;
+  }
+}
+
+.msoffice{
+  background: linear-gradient(
+    92.23deg,
+    #ff56f6 21.43%,
+    #b936ee 50.63%,
+    #3bace2 100%,
+    #406aff 117.04%
+  );
+  animation: msoffice 2s linear forwards;
+}
+
+@keyframes msoffice{
+  100%{
+    width: 95%;
+  }
+}
+
+.radial-bars{
+  width: 100%;
+  height: 170px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.radial-bars svg{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 120px;
+  height: 120px;
+}
+
+.radial-bars .progress-bar{
+  stroke-width: 15;
+  stroke: white;
+  fill: transparent;
+  stroke-dasharray: 502;
+  stroke-dashoffset: 502;
+  stroke-linecap: round;
+  animation: animate-bar 0s linear forwards;
+
+}
+@keyframes animate-bar {
+  100%{
+    stroke-dashoffset: 0;
+  }
+}
+.path{
+  stroke-width: 15;
+  stroke: #ff56f6;
+  fill: transparent;
+  stroke-dasharray: 502;
+  stroke-dashoffset: 502;
+  stroke-linecap: round;
+
+}
+
+.path-1{animation: animate-path1 2s 0s linear forwards;}
+@keyframes animate-path1 {
+  100%{
+    stroke-dashoffset: 150;
+  }
+}
+
+.path-2{animation: animate-path2 2s 0s linear forwards;}
+@keyframes animate-path2 {
+  100%{
+    stroke-dashoffset: 75;
+  }
+}
+
+.path-3{animation: animate-path3 2s 0s linear forwards;}
+@keyframes animate-path3 {
+  100%{
+    stroke-dashoffset: 125;
+  }
+}
+
+.percentage{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: xx-large;
+}
+
+
+
+
+.group .box::before {
+  content: '';
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* Makes the element circular by using a border-radius of 50% */
+  right: calc(100% + 17.5px); /* Positions the element to the right of its parent with an additional 10px offset */
+  top: 0; /* Positions the element at the top of its parent */
+  background: #ff56f6;
+  box-shadow: 0px 4.42184px 107.23px rgba(255, 86, 246, 0.51); /* Applies a shadow effect */
+  border: 1px solid black; /* Adds a black solid border with a width of 2px */
+}
+
+
+.group .education::before{
+  background-image: url('https://cdn-icons-png.flaticon.com/128/1940/1940611.png');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.group .experience::before{
+  background-image: url('https://cdn-icons-png.flaticon.com/128/522/522510.png');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.group .membership::before{
+  background-image: url('https://cdn-icons-png.flaticon.com/128/3951/3951241.png');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn {
+  background: linear-gradient(
+    92.23deg,
+    #ff56f6 21.43%,
+    #b936ee 50.63%,
+    #3bace2 100%,
+    #406aff 117.04%
+  );
+  box-shadow: 0px 4.42184px 107.23px rgba(255, 86, 246, 0.51);
+}
+
+.btn:hover {
+  background: linear-gradient(
+    92.23deg,
+    #406aff 21.43%,
+    #3bace2 50.63%,
+    #b936ee 100%,
+    #ff56f6 117.04%
+  );
+  cursor: pointer;
+}
+
+.gradient,
+.active {
+  background: linear-gradient(
+    92.23deg,
+    #406aff 21.43%,
+    #3bace2 50.63%,
+    #b936ee 100%,
+    #ff56f6 117.04%
+  );
+}
+
+.active {
+  color: #fff;
+  padding: 7.5px;
+  border-radius: 50%;
+}
+
+.rounded-circle{
+  border-radius: 100%;
+}
+
+@layer base {
+  body {
+    @apply font-secondary text-lg leading-6 text-white;
+  }
+  .h2 {
+    @apply font-primary text-[32px] mb-6 tracking-[10%] uppercase;
+  }
+  .h3 {
+    @apply font-primary font-semibold text-[26px] leading-8;
+    margin-bottom: -20%;
+  }
+  .btn {
+    @apply rounded-full font-primary text-white font-medium;
+  }
+  .btn-sm {
+    @apply px-6 text-sm;
+  }
+  .btn-lg {
+    @apply px-10 text-base;
+  }
+  .btn-link {
+    @apply text-base;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r text-transparent bg-clip-text from-[#42A6E3] to-[#FF56F6] font-bold font-primary hover:from-[#FF56F6] hover:to-[#42A6E3];
+  }
+  .section {
+    @apply py-8 lg:py-24 lg:h-screen flex items-center;
+  }
+
+  
+
+}
+
+
+
