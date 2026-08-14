@@ -33,11 +33,28 @@ const Contact = () => {
     }
     setLoading(true);
     setStatus("");
-    emailjs
-      .sendForm("service_2sjbc74", "template_qei1hea", form.current, "_v9J-jd4sPmzRkIKI")
-      .then(() => {
-        setStatus("success:Message sent successfully!");
-        setName(""); setEmail(""); setMessage("");
+    fetch("https://formsubmit.co/ajax/ammarbaig230903@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success === "true" || data.success === true) {
+          setStatus("success:Message sent successfully!");
+          setName("");
+          setEmail("");
+          setMessage("");
+        } else {
+          setStatus("error:Something went wrong. Please try again.");
+        }
       })
       .catch(() => setStatus("error:Something went wrong. Please try again."))
       .finally(() => setLoading(false));
