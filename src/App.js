@@ -1,5 +1,4 @@
 import React from 'react';
-// components
 import Banner from './components/Banner';
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -8,19 +7,26 @@ import Services from './components/Services';
 import Work from './components/Work';
 import Contact from './components/Contact';
 import Experience from './components/Experience';
+import MathBackground from './components/MathBackground';
+import ScrollToTop from './components/ScrollToTop';
+import Research from './components/Research';
 
 const App = () => {
   return (
-    <div className='bg-site bg-no-repeat bg-cover overflow-hidden'>
-      <Header />
-      <Banner />
-      <Nav />
-      <About />
-      <Services />
-      <Experience />
-      <Work />
-      <Contact />
-      {/* <div className='h-[4000px]'></div> */}
+    <div className='bg-site bg-no-repeat bg-cover overflow-hidden relative'>
+      <MathBackground />
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <Header />
+        <Banner />
+        <Nav />
+        <About />
+        <Services />
+        <Research />
+        <Experience />
+        <Work />
+        <Contact />
+      </div>
+      <ScrollToTop />
     </div>
   );
 };

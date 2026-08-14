@@ -1,88 +1,115 @@
 import React from "react";
-
 import CountUp from "react-countup";
-
 import { useInView } from "react-intersection-observer";
-
 import Image from "./image.png";
-
-import { Link } from "react-scroll";
-
 import { motion } from "framer-motion";
+import { fadeIn, scaleIn } from "../variants";
+import { FaFlask } from "react-icons/fa";
 
-import { fadeIn } from "../variants";
+const stats = [
+  { end: 18, suffix: "+", label: "Years of\nExperience" },
+  { end: 8, suffix: "+", label: "Courses\nTaught" },
+  { end: 1000, suffix: "+", label: "Students\nTaught" },
+];
 
 const About = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.5,
-  });
+  const [ref, inView] = useInView({ threshold: 0.3 });
+
   return (
-    <section id="about" className="h-screen flex flex-col justify-center items-center" ref={ref}>
-      <div className="h-1/4"></div>
+    <section id="about" className="min-h-screen flex flex-col justify-center items-center py-16" ref={ref}>
       <div className="container mx-auto">
-        <div className="flex flex-col gap-y-2 lg:flex-row lg:items-center lg:gap-x-20 lg:gap-y-0">
+        <div className="flex flex-col gap-y-8 lg:flex-row lg:items-center lg:gap-x-16">
+
+          {/* Image */}
           <motion.div
             variants={fadeIn("right", 0.3)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.3 }}
-            className="m-auto flex-1 bg-contain bg-no-repeat max-w-[200px] lg:h-[300px] mix-blend-lighten bg-top lg:max-w-[300px]"
+            className="m-auto flex-1 max-w-[220px] lg:max-w-[280px]"
           >
-            <img className="" src={Image} alt="" />
+            <div className="relative">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/20 to-[#6366F1]/20 blur-2xl"></div>
+              <img className="relative z-10 rounded-2xl mix-blend-multiply" src={Image} alt="Fariha Ansari" />
+            </div>
           </motion.div>
+
+          {/* Content */}
           <motion.div
-            variants={fadeIn("left", 0.5)}
+            variants={fadeIn("left", 0.4)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.3 }}
             className="flex-1"
           >
-            <h2 className="h2 mb-2 mb-lg-4 text-accent">About Me</h2>
-            <h3 className="h3 text-[20px] leading-[20px] lg:text-[22px] lg:leading-[22px] mb-3 mb-lg-4 text-justify">
-              I'm a Mathematics Lecturer with over 14 years of experience
+            <h2 className="h2 mb-2 text-accent">About Me</h2>
+            <h3 className="text-[18px] leading-snug lg:text-[22px] mb-4 font-primary font-semibold text-white">
+              Mathematics Lecturer & PhD Researcher with 18 Years of Experience
             </h3>
-            <p className="mb-3 text-[12px] lg:text-[20px] text-justify mb-lg-5">
-              I am a passionate mathematics lecturer with a deep love for
-              numbers and a commitment to inspiring my students. With a strong
-              background in mathematical theory and a knack for making complex
-              concepts understandable, I aim to empower my students with the
-              skills and confidence to excel in their mathematical journey.
+            <p className="mb-4 text-[13px] lg:text-[16px] text-justify text-white/80 leading-relaxed">
+              I am a passionate mathematics lecturer at Sir Syed University of Engineering & Technology (SSUET), with extensive experience in undergraduate teaching, Outcome-Based Education (OBE), and academic quality assurance. Currently pursuing a PhD in Mathematics, my research integrates Graph Theory, Combinatorial Optimization, and Machine Learning.
             </p>
-            <div className="flex gap-x-6 lg:gap-x-10 mb-4">
-              <div className="items-center">
-                <div className="text-[24px] lg:text-[32px] font-tertiary text-gradient mb-2">
-                  {inView ? <CountUp start={0} end={15} duration={5} /> : null}+
-                </div>
-                <div className="font-primary text-[12px] leading-[1.5] lg:text-sm tracking-[2px]">
-                  Years of <br />
-                  Experience
-                </div>
+
+            {/* PhD Badge */}
+            <motion.div
+              variants={scaleIn(0.5)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.3 }}
+              className="flex items-start gap-3 bg-black/30 backdrop-blur-sm border border-accent/25 rounded-xl p-4 mb-6 shadow-sm"
+            >
+              <div className="text-accent text-2xl mt-0.5 flex-shrink-0">
+                <FaFlask />
               </div>
               <div>
-                <div className="text-[24px] lg:text-[32px] font-tertiary text-gradient mb-2">
-                  {inView ? <CountUp start={0} end={5} duration={5} /> : null}+
-                </div>
-                <div className="font-primary text-[12px] leading-[1.5] lg:text-sm tracking-[2px]">
-                  Courses Of <br />
-                  Teaching
-                </div>  
+                <p className="font-primary text-[13px] text-accent font-semibold tracking-wide uppercase mb-0.5">
+                  PhD in Mathematics · In Progress
+                </p>
+                <p className="text-[12px] lg:text-[14px] text-white/80 leading-snug">
+                  Research: Optimizing Scheduling Problems using Vertex Coloring &amp; Machine Learning · CGPA 3.70/4.00 · SSUET
+                </p>
               </div>
-              <div>
-                <div className="text-[24px] lg:text-[32px] font-tertiary text-gradient mb-2">
-                  {inView ? <CountUp start={0} end={5} duration={5} /> : null}
-                  k+
-                </div>
-                <div className="font-primary text-[12px] leading-[1.5] lg:text-sm tracking-[2px]">
-                  Graduated
-                  <br />
-                  Students
-                </div>
-              </div>
+            </motion.div>
+
+            {/* Teaching Philosophy */}
+            <motion.div
+              variants={fadeIn("up", 0.5)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.3 }}
+              className="bg-black/30 border border-white/10 rounded-xl p-4 mb-6 relative overflow-hidden shadow-sm"
+            >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent to-[#6366F1]"></div>
+              <p className="font-primary text-[11px] text-accent font-semibold tracking-widest uppercase mb-2 pl-3">Teaching Philosophy</p>
+              <p className="text-[12px] lg:text-[13px] text-white/80 leading-relaxed pl-3 text-justify">
+                My teaching centers on building genuine mathematical understanding rather than procedural competency alone. I emphasize critical thinking, analytical reasoning, and mathematical communication — guiding students from foundational principles to confident application in engineering contexts. Through concept-driven lectures, active engagement, and regular academic counselling, I aim to develop students who approach complex problems with clarity, precision, and intellectual curiosity.
+              </p>
+            </motion.div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-3 lg:gap-5 mt-4">
+              {stats.map(({ end, suffix, label }, i) => (
+                <motion.div
+                  key={i}
+                  variants={scaleIn(0.3 + i * 0.1)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl p-3 lg:p-5 flex flex-col items-center justify-center text-center hover:-translate-y-1 hover:bg-white/[0.06] hover:shadow-[0_8px_30px_rgba(255,86,246,0.1)] transition-all duration-400"
+                >
+                  <div className="text-[24px] lg:text-[36px] font-tertiary text-gradient mb-2 leading-none">
+                    {inView ? <CountUp start={0} end={end} duration={4} separator="," /> : "0"}
+                    {suffix}
+                  </div>
+                  <div className="font-primary text-[9px] lg:text-[11px] leading-snug tracking-[1px] lg:tracking-[2px] text-white/70 whitespace-pre-line uppercase">
+                    {label}
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <div className="flex gap-x-8 items-center"></div>
           </motion.div>
         </div>
-      </div><div className="h-3/4"></div>
+      </div>
     </section>
   );
 };

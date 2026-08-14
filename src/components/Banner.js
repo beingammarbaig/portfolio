@@ -1,47 +1,54 @@
 import React from "react";
 import Image from "./image1.png";
 import { Link } from "react-scroll";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { fadeIn } from "../variants";
 import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
-    <div
-      className="h-screen container-fluid d-flex flex-column align-items-center"
-      id="home"
-    >
-      <div className="h-1/4"></div>
+    <div className="min-h-screen container-fluid d-flex flex-column justify-content-center align-items-center py-24 lg:py-16" id="home">
       <div className="container mx-auto">
         <div className="row align-items-center">
           <div className="col-md-7">
-            <motion.h1
-              variants={fadeIn("up", 0.3)}
+            <motion.div
+              variants={fadeIn("down", 0.1)}
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="text-[36px] font-bold lg:leading-8 text-center lg:text-[40px] mb-lg-2 text-md-start"
+              className="flex w-fit mx-auto md:mx-0 items-center gap-2 bg-black/30 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-3 text-[11px] lg:text-[13px] font-primary tracking-widest text-accent uppercase"
             >
-              FARIHA <span>ANSARI</span>
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse inline-block"></span>
+              PhD Researcher · SSUET Karachi
+            </motion.div>
+
+            <motion.h1
+              variants={fadeIn("up", 0.2)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.7 }}
+              className="text-[36px] font-bold font-primary lg:leading-[1.1] text-center lg:text-[44px] mb-lg-2 text-md-start text-white"
+            >
+              FARIHA <span className="text-gradient">ANSARI</span>
             </motion.h1>
+
             <motion.div
               variants={fadeIn("up", 0.3)}
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="text-[30px] mb-2.5 lg:text-[36px] mb-lg-4 font-secondary font-semibold text-uppercase text-center text-md-start"
+              className="text-[22px] mb-2.5 lg:text-[30px] mb-lg-4 font-secondary font-semibold text-center text-md-start"
             >
-              <span>I am a </span>
+              <span className="text-white">I am a </span>
               <TypeAnimation
                 sequence={[
-                  "Lecturer",
+                  "PhD Researcher",
                   2000,
-                  "Mathematician",
+                  "Math Lecturer",
                   2000,
-                  "Member",
+                  "VLE Coordinator",
                   2000,
-                  "Coordinator",
+                  "OBE Specialist",
                   2000,
                 ]}
                 speed={50}
@@ -50,95 +57,79 @@ const Banner = () => {
                 repeat={Infinity}
               />
             </motion.div>
+
             <motion.div
               variants={fadeIn("down", 0.3)}
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="d-flex justify-content-center justify-content-md-start d-md-none"
+              className="d-flex justify-content-center justify-content-md-start d-md-none my-3"
             >
-              <img
-                className="rounded-circle max-w-[150px] lg:max-w-[200px]"
-                src={Image}
-                alt=""
-              />
+              <img className="rounded-circle max-w-[140px]" src={Image} alt="Fariha Ansari" />
             </motion.div>
+
             <motion.p
-              variants={fadeIn("up", 0.3)}
+              variants={fadeIn("up", 0.4)}
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="text-[15px] lg:text-[18px] leading-[1.25] mt-2 mt-lg-3 mb-2 text-justify"
+              className="text-[13px] lg:text-[16px] leading-[1.6] mt-2 mt-lg-3 mb-2 text-justify text-white/80"
             >
-              Passionate mathematician dedicated to inspiring the next
-              generation of problem solvers. With a profound love for numbers
-              and a commitment to fostering mathematical curiosity, I am excited
-              to embark on this educational journey with you. I am a very
-              hardworking and ambitious individual. I can easily adjust to a new
-              environment as long as I have a chance to do so.
+              Experienced Mathematics Lecturer with nearly 18 years at SSUET, currently pursuing a PhD focused on Graph Theory, Combinatorial Optimization, and Machine Learning. Committed to inspiring analytical thinking and mathematical excellence in engineering students.
             </motion.p>
+
             <motion.div
-              variants={fadeIn("up", 0.3)}
+              variants={fadeIn("up", 0.5)}
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="d-flex gap-3 justify-content-center justify-content-md-start mb-2 align-items-center"
+              className="d-flex gap-3 justify-content-center justify-content-md-start mb-3 align-items-center"
             >
-              <button className="btn btn-md text-[12px] lg:text-[15px] xl:text-[20px] px-4 py-2 xl:py-3 px-lg-5 ">
-                <Link
-                  activeClass="active"
-                  mdooth={true}
-                  spy={true}
-                  offset={60}
-                  to="contact"
-                  className="cursor-pointer"
-                >
+              <button className="btn btn-md text-[12px] lg:text-[15px] xl:text-[18px] px-5 py-2 xl:py-3">
+                <Link activeClass="active" smooth={true} spy={true} offset={60} to="contact" className="cursor-pointer text-white">
                   Contact Me
                 </Link>
               </button>
               <a
                 href="https://www.ssuet.edu.pk/faculties/ms-fariha-ansari/"
-                className="text-gradient btn-link text-center text-[12px] lg:text-[15px] xl:text-[20px] py-2.5"
+                className="text-gradient btn-link text-center text-[12px] lg:text-[15px] xl:text-[18px] py-2.5 hover:opacity-80 transition-opacity"
+                target="_blank"
+                rel="noreferrer"
               >
-                My Portfolio
+                My Profile →
               </a>
             </motion.div>
-            <motion.div
-              variants={fadeIn("up", 0.3)}
-              initial="hidden"
-              whileInView={"show"}
-              viewport={{ once: false, amount: 0.7 }}
-              className="text-[24px] xl:text-[28px] d-flex gap-4 justify-content-center justify-content-md-start mx-[35px]"
-            >
-              <a href="linkedin.com">
-                <FaLinkedin />
-              </a>
-              <a href="facebook.com">
-                <FaFacebook />
-              </a>
-              <a href="instagram.com">
-                <FaInstagram />
-              </a>
-            </motion.div>
+
           </div>
+
           <motion.div
-            variants={fadeIn("down", 0.3)}
+            variants={fadeIn("down", 0.4)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.7 }}
-            className="col-md-5 d-none d-md-flex mx-auto my-5 justify-content-center lg:max-w-[250px] "
+            className="col-md-5 d-none d-md-flex mx-auto my-5 justify-content-center"
           >
-            {" "}
-            {/* Updated justify-content-center to justify-content-end */}
-            <img
-              className="rounded-circle"
-              src={Image}
-              alt=""
-            />
+            <div className="relative float-anim">
+              {/* Rotating gradient ring */}
+              <div className="absolute inset-0 rounded-full" style={{
+                background: "conic-gradient(from 0deg, #ff56f6, #b936ee, #3bace2, #406aff, #ff56f6)",
+                animation: "spin 8s linear infinite",
+                padding: "3px",
+                borderRadius: "50%",
+                filter: "blur(1px)",
+              }}></div>
+              {/* Glow */}
+              <div className="absolute inset-0 rounded-full bg-accent/10 blur-3xl scale-125"></div>
+              <img
+                className="rounded-circle relative z-10 max-w-[260px] lg:max-w-[300px] border-2 border-accent/40"
+                src={Image}
+                alt="Fariha Ansari"
+                style={{ filter: "drop-shadow(0 0 20px rgba(255,86,246,0.25))" }}
+              />
+            </div>
           </motion.div>
         </div>
       </div>
-      <div className="h-3/4"></div>
     </div>
   );
 };
