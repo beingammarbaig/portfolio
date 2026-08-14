@@ -28,7 +28,7 @@ const Header = () => {
           <a
             href="/Fariha_Ansari_CV.pdf"
             download="Fariha_Ansari_CV.pdf"
-            className="hidden sm:inline-flex items-center gap-2 text-[11px] lg:text-[13px] font-primary text-white/80 hover:text-accent border border-white/20 hover:border-accent/40 rounded-full px-3 py-1.5 transition-all duration-300 bg-black/30 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 text-[11px] lg:text-[13px] font-primary text-white/80 hover:text-accent border border-white/20 hover:border-accent/40 rounded-full px-3 py-1.5 transition-all duration-300 bg-black/30 backdrop-blur-sm"
           >
             <FaDownload className="text-[10px]" /> CV
           </a>
