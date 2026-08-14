@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
-import emailjs from "@emailjs/browser";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaLinkedin } from "react-icons/fa";
 
 const contactDetails = [
