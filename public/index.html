@@ -22,7 +22,7 @@
     <script>
       try {
         var localTheme = localStorage.getItem('theme');
-        if (localTheme === 'dark' || (!localTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (localTheme === 'dark') {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');

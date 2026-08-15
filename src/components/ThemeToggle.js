@@ -7,7 +7,7 @@ const ThemeToggle = () => {
     if (storedTheme) {
       return storedTheme === 'dark';
     }
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return false; // Default to Light Mode
   });
 
   useEffect(() => {
