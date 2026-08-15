@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 import { FaDownload } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
@@ -36,6 +37,7 @@ const Header = () => {
               Work with Me
             </Link>
           </button>
+          <ThemeToggle />
         </motion.div>
       </div>
     </div>

@@ -10,9 +10,10 @@ const MATH_SYMBOLS = [
 ];
 
 const getThemeColors = () => {
+  const isDark = document.documentElement.classList.contains('dark');
   return {
-    nodes: ['#059669', '#0891B2', '#6366F1', '#34D399'],
-    symbols: ['#059669bb', '#0891B2bb', '#6366F1bb', '#0F172A55'],
+    nodes: isDark ? ['#ff56f6', '#b936ee', '#818CF8', '#22D3EE'] : ['#059669', '#0891B2', '#6366F1', '#34D399'],
+    symbols: isDark ? ['#ff56f6bb', '#b936eebb', '#6366F1bb', '#ffffff55'] : ['#059669bb', '#0891B2bb', '#6366F1bb', '#0F172A55'],
   };
 };
 

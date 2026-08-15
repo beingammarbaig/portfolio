@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 
-:root {
+:root, html:not(.dark) {
+  color-scheme: light;
   --theme-color-1: #059669;
   --theme-color-2: #0891B2;
   --theme-shadow-rgb: 5, 150, 105;
   --accent: #059669;
+}
+html.dark {
+  color-scheme: dark;
+  --theme-color-1: #ff56f6;
+  --theme-color-2: #b936ee;
+  --theme-shadow-rgb: 255, 86, 246;
+  --accent: #B809C3;
 }
 
 
