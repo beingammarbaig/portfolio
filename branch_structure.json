@@ -1,0 +1,24 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "New",
+    "dual-theme",
+    "main",
+    "origin",
+    "simple"
+  ],
+  "parent": {
+    "New": "main",
+    "dual-theme": "main",
+    "main": null,
+    "origin": "main",
+    "simple": "main"
+  },
+  "order": [
+    "main",
+    "New",
+    "dual-theme",
+    "origin",
+    "simple"
+  ]
+}
