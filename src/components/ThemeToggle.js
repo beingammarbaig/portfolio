@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 
 const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      return storedTheme === 'dark';
-    }
-    return false; // Default to Light Mode
-  });
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
+    // Check local storage or default to true (dark mode)
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'light') {
+      setIsDarkMode(false);
+
       document.documentElement.classList.remove('dark');
     }
-  }, [isDarkMode]);
+    else {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
 
   const toggleTheme = () => {
     if (isDarkMode) {
@@ -39,9 +40,8 @@ const ThemeToggle = () => {
 
       {/* Sliding Thumb */}
       <div
-        className={`absolute left-1 w-6 h-6 lg:w-7 lg:h-7 rounded-full shadow-md transition-transform duration-300 z-10 ${
-          isDarkMode ? 'translate-x-6 lg:translate-x-7 bg-[#c4c9d2]' : 'translate-x-0 bg-[#ffcf33]'
-        }`}
+        className={`absolute left-1 w-6 h-6 lg:w-7 lg:h-7 rounded-full shadow-md transition-transform duration-300 z-10 ${isDarkMode ? 'translate-x-6 lg:translate-x-7 bg-[#c4c9d2]' : 'translate-x-0 bg-[#ffcf33]'
+          }`}
       >
         {isDarkMode && (
           <div className="relative w-full h-full rounded-full overflow-hidden">
