@@ -13,7 +13,7 @@ import Research from './components/Research';
 
 const App = () => {
   return (
-    <div className='bg-gradient-to-br from-emerald-50 to-cyan-50 dark:bg-site bg-no-repeat bg-cover overflow-hidden relative transition-colors duration-500'>
+    <div className='bg-gradient-to-br from-emerald-50 to-cyan-50 bg-no-repeat bg-cover overflow-hidden relative'>
       <MathBackground />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Header />
