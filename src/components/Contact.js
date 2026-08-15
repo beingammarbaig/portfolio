@@ -75,7 +75,7 @@ const Contact = () => {
             className="flex-1 flex flex-col justify-center mb-10 lg:mb-0"
           >
             <h4 className="text-sm text-accent uppercase font-medium tracking-widest mb-2">Get In Touch</h4>
-            <h2 className="text-[28px] sm:text-[36px] lg:text-[64px] font-primary font-bold leading-none mb-5 lg:mb-8 text-white">
+            <h2 className="text-[28px] sm:text-[36px] lg:text-[64px] font-primary font-bold leading-none mb-5 lg:mb-8 text-slate-800 dark:text-white">
               Let's<br /><span className="text-gradient">Collaborate</span>
             </h2>
 
@@ -96,11 +96,11 @@ const Contact = () => {
                     <p className="text-[10px] text-gray-400 uppercase tracking-widest font-primary">{label}</p>
                     {href ? (
                       <a href={href} target={href.startsWith("http") ? "_blank" : "_self"} rel="noreferrer"
-                        className="text-[13px] lg:text-[14px] text-white/80 hover:text-accent transition-colors duration-300 break-all">
+                        className="text-[13px] lg:text-[14px] text-slate-600 dark:text-white/80 hover:text-accent transition-colors duration-300 break-all">
                         {value}
                       </a>
                     ) : (
-                      <p className="text-[13px] lg:text-[14px] text-white/80">{value}</p>
+                      <p className="text-[13px] lg:text-[14px] text-slate-600 dark:text-white/80">{value}</p>
                     )}
                   </div>
                 </motion.div>
@@ -116,12 +116,12 @@ const Contact = () => {
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.3 }}
-            className="flex-1 bg-black/30 backdrop-blur-sm border border-white/10 rounded-2xl flex flex-col gap-y-5 p-6 lg:p-8 shadow-sm"
+            className="flex-1 bg-white/80 dark:bg-black/30 backdrop-blur-sm border border-slate-200 dark:border-0 rounded-2xl flex flex-col gap-y-5 p-6 lg:p-8 shadow-sm"
           >
             <div>
-              <label className="text-[11px] text-white/60 uppercase tracking-widest font-primary mb-1 block">Your Name *</label>
+              <label className="text-[11px] text-slate-500 dark:text-white/60 uppercase tracking-widest font-primary mb-1 block">Your Name *</label>
               <input
-                className="bg-transparent border-b border-white/20 py-2.5 outline-none w-full placeholder:text-white/40 focus:border-accent transition-all duration-300 text-[14px] text-white"
+                className="bg-transparent border-b border-slate-300 dark:border-white/20 py-2.5 outline-none w-full placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-accent transition-all duration-300 text-[14px] text-slate-800 dark:text-white"
                 type="text"
                 placeholder="Fariha Ansari"
                 name="name"
@@ -130,9 +130,9 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-[11px] text-white/60 uppercase tracking-widest font-primary mb-1 block">Email Address *</label>
+              <label className="text-[11px] text-slate-500 dark:text-white/60 uppercase tracking-widest font-primary mb-1 block">Email Address *</label>
               <input
-                className="bg-transparent border-b border-white/20 py-2.5 outline-none w-full placeholder:text-white/40 focus:border-accent transition-all duration-300 text-[14px] text-white"
+                className="bg-transparent border-b border-slate-300 dark:border-white/20 py-2.5 outline-none w-full placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-accent transition-all duration-300 text-[14px] text-slate-800 dark:text-white"
                 type="email"
                 placeholder="you@example.com"
                 name="email"
@@ -141,9 +141,9 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-[11px] text-white/60 uppercase tracking-widest font-primary mb-1 block">Message *</label>
+              <label className="text-[11px] text-slate-500 dark:text-white/60 uppercase tracking-widest font-primary mb-1 block">Message *</label>
               <textarea
-                className="bg-transparent border-b border-white/20 pt-2.5 outline-none w-full placeholder:text-white/40 focus:border-accent transition-all duration-300 resize-none text-[14px] text-white"
+                className="bg-transparent border-b border-slate-300 dark:border-white/20 pt-2.5 outline-none w-full placeholder:text-slate-400 dark:placeholder:text-white/40 focus:border-accent transition-all duration-300 resize-none text-[14px] text-slate-800 dark:text-white"
                 placeholder="Your message..."
                 name="message"
                 rows={4}

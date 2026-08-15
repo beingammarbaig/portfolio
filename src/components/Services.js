@@ -47,10 +47,10 @@ const Services = () => {
               className="w-full max-w-[260px] lg:max-w-[320px] mb-8 mx-auto" 
             />
             <h2 className="h2 text-accent mb-2">What I Do</h2>
-            <h3 className="text-[17px] lg:text-[22px] font-primary font-semibold leading-snug max-w-[420px] mb-5 text-white">
+            <h3 className="text-[17px] lg:text-[22px] font-primary font-semibold leading-snug max-w-[420px] mb-5 text-slate-800 dark:text-white">
               18 Years of Academic Excellence at SSUET
             </h3>
-            <p className="text-[13px] lg:text-[15px] text-white/80 leading-relaxed max-w-[400px] mb-6 text-justify">
+            <p className="text-[13px] lg:text-[15px] text-slate-600 dark:text-white/80 leading-relaxed max-w-[400px] mb-6 text-justify">
               Combining deep mathematical expertise with modern pedagogy, research, and digital education coordination to drive student success and institutional quality.
             </p>
             <button className="btn btn-sm py-2 px-6">
@@ -77,16 +77,16 @@ const Services = () => {
               <motion.div
                 key={index}
                 variants={scaleIn(0.1 * index)}
-                className="group flex items-start gap-4 bg-black/30 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-accent/40 hover:bg-black/50 transition-all duration-500 shadow-sm hover:shadow-md"
+                className="group flex items-start gap-4 bg-white/80 dark:bg-black/30 backdrop-blur-sm border border-slate-200 dark:border-0 rounded-xl p-4 hover:border-accent/40 hover:bg-white/90 dark:hover:bg-black/50 transition-all duration-500 shadow-sm hover:shadow-md"
               >
                 <div className="text-accent text-2xl mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
                 </div>
                 <div>
-                  <h4 className="text-[14px] lg:text-[16px] font-primary font-semibold mb-1 text-white group-hover:text-gradient transition-all duration-300">
+                  <h4 className="text-[14px] lg:text-[16px] font-primary font-semibold mb-1 text-slate-800 dark:text-white group-hover:text-gradient transition-all duration-300">
                     {service.name}
                   </h4>
-                  <p className="text-[12px] lg:text-[13px] text-white/60 leading-relaxed text-justify">
+                  <p className="text-[12px] lg:text-[13px] text-slate-500 dark:text-white/60 leading-relaxed text-justify">
                     {service.desc}
                   </p>
                 </div>

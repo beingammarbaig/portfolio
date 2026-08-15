@@ -16,7 +16,7 @@ const Banner = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="flex w-fit mx-auto md:mx-0 items-center gap-2 bg-black/30 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-3 text-[11px] lg:text-[13px] font-primary tracking-widest text-accent uppercase"
+              className="flex w-fit mx-auto mx-md-0 items-center gap-2 bg-white/80 dark:bg-black/30 backdrop-blur-sm border border-slate-300 dark:border-0 rounded-full px-4 py-1.5 mb-3 text-[11px] lg:text-[13px] font-primary tracking-widest text-accent uppercase"
             >
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse inline-block"></span>
               PhD Researcher · SSUET Karachi
@@ -27,7 +27,7 @@ const Banner = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="text-[36px] font-bold font-primary lg:leading-[1.1] text-center lg:text-[44px] mb-lg-2 text-md-start text-white"
+              className="text-[36px] font-bold font-primary lg:leading-[1.1] text-center lg:text-[44px] mb-lg-2 text-md-start text-slate-800 dark:text-white"
             >
               FARIHA <span className="text-gradient">ANSARI</span>
             </motion.h1>
@@ -39,7 +39,7 @@ const Banner = () => {
               viewport={{ once: false, amount: 0.7 }}
               className="text-[22px] mb-2.5 lg:text-[30px] mb-lg-4 font-secondary font-semibold text-center text-md-start"
             >
-              <span className="text-white">I am a </span>
+              <span className="text-slate-800 dark:text-white">I am a </span>
               <TypeAnimation
                 sequence={[
                   "PhD Researcher",
@@ -73,7 +73,7 @@ const Banner = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.7 }}
-              className="text-[13px] lg:text-[16px] leading-[1.6] mt-2 mt-lg-3 mb-2 text-justify text-white/80"
+              className="text-[13px] lg:text-[16px] leading-[1.6] mt-2 mt-lg-3 mb-2 text-justify text-slate-600 dark:text-white/80"
             >
               Experienced Mathematics Lecturer with nearly 18 years at SSUET, currently pursuing a PhD focused on Graph Theory, Combinatorial Optimization, and Machine Learning. Committed to inspiring analytical thinking and mathematical excellence in engineering students.
             </motion.p>
@@ -112,7 +112,7 @@ const Banner = () => {
             <div className="relative float-anim">
               {/* Rotating gradient ring */}
               <div className="absolute inset-0 rounded-full" style={{
-                background: "conic-gradient(from 0deg, #ff56f6, #b936ee, #3bace2, #406aff, #ff56f6)",
+                background: "conic-gradient(from 0deg, var(--theme-color-1), var(--theme-color-2), #3bace2, #406aff, var(--theme-color-1))",
                 animation: "spin 8s linear infinite",
                 padding: "3px",
                 borderRadius: "50%",
@@ -121,10 +121,10 @@ const Banner = () => {
               {/* Glow */}
               <div className="absolute inset-0 rounded-full bg-accent/10 blur-3xl scale-125"></div>
               <img
-                className="rounded-circle relative z-10 max-w-[260px] lg:max-w-[300px] border-2 border-accent/40"
+                className="rounded-circle relative z-10 max-w-[260px] lg:max-w-[300px] border-accent/40"
                 src={Image}
                 alt="Fariha Ansari"
-                style={{ filter: "drop-shadow(0 0 20px rgba(255,86,246,0.25))" }}
+                style={{ filter: "drop-shadow(0 0 20px rgba(var(--theme-shadow-rgb),0.25))" }}
               />
             </div>
           </motion.div>

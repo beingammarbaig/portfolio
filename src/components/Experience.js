@@ -72,7 +72,7 @@ const roles = [
 const TimelineCard = ({ item }) => (
   <motion.div
     variants={slideUp(0.1)}
-    className="relative border border-white/10 bg-black/30 backdrop-blur-sm rounded-xl cursor-pointer group mb-3 hover:border-accent/40 hover:bg-black/50 transition-all duration-400 overflow-hidden shadow-sm hover:shadow-md"
+    className="relative border border-slate-200 dark:border-0 bg-white/80 dark:bg-black/30 backdrop-blur-sm rounded-xl cursor-pointer group mb-3 hover:border-accent/40 hover:bg-white/90 dark:hover:bg-black/50 transition-all duration-400 overflow-hidden shadow-sm hover:shadow-md"
   >
     <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-accent to-[#6366F1] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     <div className="p-3 lg:p-4">
@@ -89,7 +89,7 @@ const TimelineCard = ({ item }) => (
       <h3 className="text-gradient text-[12px] lg:text-[15px] font-semibold leading-snug mt-1">
         {item.title}
       </h3>
-      <p className="text-[11px] lg:text-[13px] text-white/60 leading-snug">{item.institution}</p>
+      <p className="text-[11px] lg:text-[13px] text-slate-500 dark:text-white/60 leading-snug">{item.institution}</p>
       {item.detail && (
         <p className="text-[10px] lg:text-[12px] text-gray-400 mt-0.5 italic">{item.detail}</p>
       )}
@@ -120,7 +120,7 @@ const Work = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.3 }}
-              className="font-primary font-semibold text-[18px] lg:text-[22px] mb-3 flex items-center gap-2 text-white"
+              className="font-primary font-semibold text-[18px] lg:text-[22px] mb-3 flex items-center gap-2 text-slate-800 dark:text-white"
             >
               <span className="w-1 h-5 bg-gradient-to-b from-accent to-[#6366F1] rounded-full inline-block"></span>
               Education
@@ -130,7 +130,7 @@ const Work = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.1 }}
-              className="border-l border-white/20 pl-4 py-1"
+              className="border-l border-slate-300 dark:border-0 pl-4 py-1"
             >
               {education.map((item, i) => (
                 <TimelineCard key={i} item={item} />
@@ -145,7 +145,7 @@ const Work = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.3 }}
-              className="font-primary font-semibold text-[18px] lg:text-[22px] mb-3 flex items-center gap-2 text-white"
+              className="font-primary font-semibold text-[18px] lg:text-[22px] mb-3 flex items-center gap-2 text-slate-800 dark:text-white"
             >
               <span className="w-1 h-5 bg-gradient-to-b from-accent to-[#6366F1] rounded-full inline-block"></span>
               Experience
@@ -155,7 +155,7 @@ const Work = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.1 }}
-              className="border-l border-white/20 pl-4 py-1 mb-4"
+              className="border-l border-slate-300 dark:border-0 pl-4 py-1 mb-4"
             >
               {experience.map((item, i) => (
                 <TimelineCard key={i} item={item} />
@@ -167,7 +167,7 @@ const Work = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.3 }}
-              className="font-primary font-semibold text-[18px] lg:text-[22px] mb-3 flex items-center gap-2 text-white"
+              className="font-primary font-semibold text-[18px] lg:text-[22px] mb-3 flex items-center gap-2 text-slate-800 dark:text-white"
             >
               <span className="w-1 h-5 bg-gradient-to-b from-accent to-[#6366F1] rounded-full inline-block"></span>
               Academic Roles
@@ -177,7 +177,7 @@ const Work = () => {
               initial="hidden"
               whileInView={"show"}
               viewport={{ once: false, amount: 0.1 }}
-              className="border-l border-white/20 pl-4 py-1"
+              className="border-l border-slate-300 dark:border-0 pl-4 py-1"
             >
               {roles.map((item, i) => (
                 <TimelineCard key={i} item={item} />
@@ -194,7 +194,7 @@ const Work = () => {
           viewport={{ once: false, amount: 0.1 }}
           className="mt-10"
         >
-          <h3 className="font-primary font-semibold text-[18px] lg:text-[22px] mb-5 flex items-center gap-2 text-white">
+          <h3 className="font-primary font-semibold text-[18px] lg:text-[22px] mb-5 flex items-center gap-2 text-slate-800 dark:text-white">
             <span className="w-1 h-5 bg-gradient-to-b from-accent to-[#6366F1] rounded-full inline-block"></span>
             Faculty Development & Knowledge-Sharing Activities
           </h3>
@@ -223,13 +223,13 @@ const Work = () => {
               <motion.div
                 key={i}
                 variants={slideUp(0.03 * i)}
-                className="flex items-start gap-3 bg-black/30 border border-white/10 rounded-xl p-3 hover:border-accent/30 hover:bg-black/50 hover:shadow-sm transition-all duration-300 group shadow-sm"
+                className="flex items-start gap-3 bg-white/80 dark:bg-black/30 border border-slate-200 dark:border-0 rounded-xl p-3 hover:border-accent/30 hover:bg-white/90 dark:hover:bg-black/50 hover:shadow-sm transition-all duration-300 group shadow-sm"
               >
                 <div className="flex-shrink-0 text-center">
                   <span className="block text-[10px] font-primary font-semibold text-accent bg-accent/10 rounded-md px-2 py-0.5">{w.year}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[11px] lg:text-[12px] font-primary font-semibold text-white leading-snug mb-0.5">{w.title}</p>
+                  <p className="text-[11px] lg:text-[12px] font-primary font-semibold text-slate-800 dark:text-white leading-snug mb-0.5">{w.title}</p>
                   <p className="text-[10px] text-gray-400 leading-snug">{w.org}</p>
                 </div>
                 {w.role === "Presenter" && (

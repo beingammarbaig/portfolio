@@ -31,18 +31,12 @@ const Nav = () => {
   return (
     <>
       {/* Scroll progress bar */}
+      {/* Scroll progress bar */}
       <div
+        className="fixed top-0 left-0 h-[3px] rounded-r-[2px] z-[9999] bg-gradient-to-r from-[#059669] via-[#0891B2] to-[#6366F1] shadow-[0_0_8px_rgba(5,150,105,0.7)] dark:from-[#ff56f6] dark:via-[#b936ee] dark:to-[#406aff] dark:shadow-[0_0_8px_rgba(255,86,246,0.7)]"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          height: "3px",
           width: `${scrollPct}%`,
-          background: "linear-gradient(90deg,#ff56f6,#b936ee,#406aff)",
-          zIndex: 9999,
           transition: "width 0.1s linear",
-          borderRadius: "0 2px 2px 0",
-          boxShadow: "0 0 8px rgba(255, 86, 246, 0.7)",
         }}
       />
 
@@ -50,14 +44,7 @@ const Nav = () => {
       <nav className="navbar fixed-bottom bottom-2" style={{ zIndex: 50 }}>
         <div className="container mx-auto">
           <div
-            className="items-center w-full h-[48px] rounded-full max-w-[420px] w-[94vw] mx-auto px-3 flex justify-between"
-            style={{
-              background: "rgba(0,0,0,0.5)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              boxShadow: "0 4px 24px rgba(0,0,0,0.5)",
-            }}
+            className="items-center w-full h-[48px] rounded-full max-w-[420px] w-[94vw] mx-auto px-3 flex justify-between bg-white/70 dark:bg-black/50 backdrop-blur-xl border border-slate-200 dark:border-0 shadow-[0_4px_24px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
           >
             {navItems.map(({ to, icon, offset, label }) => (
               <div key={to} className="relative group/nav">
