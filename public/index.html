@@ -18,6 +18,17 @@
       rel="stylesheet"
     />
     <title>Fariha Ansari | Mathematics Lecturer & PhD Researcher | SSUET</title>
+    <!-- Instant Theme Loader to prevent flashes -->
+    <script>
+      try {
+        var localTheme = localStorage.getItem('theme');
+        if (localTheme === 'dark' || (!localTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
