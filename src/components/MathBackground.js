@@ -39,8 +39,6 @@ const MathBackground = () => {
 
     const mobile = isMobile();
     const particleCount = mobile ? 20 : 55;
-    const nodeCount = mobile ? 10 : 24;
-    const edgeDist = mobile ? 150 : 210;
 
     // Floating math symbol particles
     const particles = Array.from({ length: particleCount }, () => ({
@@ -70,10 +68,8 @@ const MathBackground = () => {
     }));
 
     let animId;
-    let frame = 0;
 
     const animate = () => {
-      frame++;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const theme = getThemeColors();
 
