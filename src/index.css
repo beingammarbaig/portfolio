@@ -3,19 +3,21 @@
 @tailwind utilities;
 
 
-:root, html:not(.dark) {
+:root,
+html:not(.dark) {
   color-scheme: light;
-  --theme-color-1: #059669;
-  --theme-color-2: #0891B2;
-  --theme-shadow-rgb: 5, 150, 105;
-  --accent: #059669;
+  --theme-color-1: #16a34a;
+  --theme-color-2: #059669;
+  --theme-shadow-rgb: 22, 163, 74;
+  --accent: #16a34a;
 }
+
 html.dark {
   color-scheme: dark;
-  --theme-color-1: #ff56f6;
-  --theme-color-2: #b936ee;
-  --theme-shadow-rgb: 255, 86, 246;
-  --accent: #B809C3;
+  --theme-color-1: #4ade80;
+  --theme-color-2: #34d399;
+  --theme-shadow-rgb: 74, 222, 128;
+  --accent: #4ade80;
 }
 
 
@@ -295,11 +297,11 @@ Link:hover {
 
 .gradient,
 .active {
-  background: linear-gradient(92.23deg,
+  /* background: linear-gradient(92.23deg,
       #406aff 21.43%,
       #3bace2 50.63%,
       var(--theme-color-2) 100%,
-      var(--theme-color-1) 117.04%);
+      var(--theme-color-1) 117.04%); */
 }
 
 .active {
@@ -495,6 +497,21 @@ body {
   max-width: 100%;
 }
 
+/* ── Scroll offset for sticky header ── */
+html {
+  scroll-padding-top: 64px;
+}
+
+/* ── Hide scrollbar on horizontal scroll rows ── */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Mobile: shrink radial SVG to fit small screens ── */
 @media (max-width: 640px) {
   .radial-bars {
@@ -509,47 +526,64 @@ body {
   .percentage {
     font-size: large;
   }
+}
 
-  section {
-    padding-left: 4px;
-    padding-right: 4px;
+/* ── Prevent Framer Motion initial translateX from causing horizontal scroll ── */
+section,
+header {
+  overflow-x: clip;
+}
+
+/* ── Banner research-tag marquee ── */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
   }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 22s linear infinite;
+  will-change: transform;
 }
 
 @layer base {
   body {
-    @apply font-secondary text-lg leading-6 text-slate-800 dark:text-white;
+    @apply font-secondary text-base leading-relaxed text-slate-900 dark:text-slate-100;
   }
 
   .h2 {
-    @apply font-primary text-[32px] mb-6 tracking-[10%] uppercase;
+    @apply font-primary text-[30px] mb-5 font-bold tracking-tight;
   }
 
   .h3 {
-    @apply font-primary font-semibold text-[26px] leading-8;
+    @apply font-primary font-semibold text-[22px] leading-snug;
   }
 
   .btn {
-    @apply rounded-full font-primary text-white font-medium;
+    @apply rounded font-secondary text-white font-semibold bg-green-600 hover:bg-green-700 transition-colors duration-200;
   }
 
   .btn-sm {
-    @apply px-6 text-sm;
+    @apply px-4 py-1.5 text-sm;
   }
 
   .btn-lg {
-    @apply px-10 text-base;
+    @apply px-7 py-3 text-base;
   }
 
   .btn-link {
-    @apply text-base;
+    @apply text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300;
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r text-transparent bg-clip-text from-[var(--theme-color-1)] to-[var(--theme-color-2)] font-bold font-primary hover:from-[var(--theme-color-2)] hover:to-[var(--theme-color-1)];
+    @apply bg-gradient-to-r text-transparent bg-clip-text from-green-600 to-emerald-500 font-bold;
   }
 
   .section {
-    @apply py-8 lg:py-24 lg:h-screen flex items-center;
+    @apply py-16 lg:py-24;
   }
 }

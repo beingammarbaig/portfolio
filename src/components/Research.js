@@ -1,7 +1,9 @@
 import React from "react";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-import { fadeIn, staggerContainer, scaleIn } from "../variants";
-import { FaFlask } from "react-icons/fa";
+import { fadeIn } from "../variants";
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
 const researchAreas = [
   { label: "Graph Theory & Vertex Coloring", desc: "Chromatic properties of graphs applied to combinatorial scheduling constraints" },
@@ -13,128 +15,264 @@ const researchAreas = [
 ];
 
 const phases = [
-  { label: "Doctoral Coursework Completed", status: "done",     detail: "CGPA 3.70 / 4.00" },
-  { label: "Research Proposal Approved",    status: "done",     detail: "Topic successfully presented & approved" },
-  { label: "Research in Progress",          status: "active",   detail: "Actively ongoing" },
-  { label: "Manuscript in Preparation",     status: "active",   detail: "In progress" },
-  { label: "Thesis Defense",               status: "upcoming", detail: "Upcoming" },
+  { label: "Doctoral Coursework", status: "done", detail: "CGPA 3.70 / 4.00" },
+  { label: "Proposal Approved", status: "done", detail: "Successfully presented & approved" },
+  { label: "Research In Progress", status: "active", detail: "Actively ongoing" },
+  { label: "Manuscript in Preparation", status: "active", detail: "In progress" },
+  { label: "Thesis Defense", status: "upcoming", detail: "Upcoming" },
 ];
 
+const keywords = ["Graph Coloring", "Scheduling", "Vertex Coloring", "NP-Hard Problems", "Heuristics", "ML Optimization", "Combinatorics", "Algorithm Design"];
+
 const Research = () => {
+  const [progressRef, progressInView] = useInView({ threshold: 0.3, triggerOnce: true });
+
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center py-10 lg:py-16" id="research">
-      <div className="container mx-auto">
+    <section id="research" className="relative py-14 lg:py-28 bg-white dark:bg-slate-950 overflow-hidden">
+      {/* Section number */}
+      <div className="absolute top-4 right-6 font-primary font-bold text-[60px] sm:text-[90px] lg:text-[130px] leading-none text-slate-100 dark:text-slate-800/60 select-none pointer-events-none">
+        03
+      </div>
 
-        <motion.h2
-          variants={fadeIn("up", 0.2)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: false, amount: 0.3 }}
-          className="h2 leading-tight text-accent mb-6 text-center"
-        >
-          PhD Research
-        </motion.h2>
+      <div className="container mx-auto px-4 relative z-10">
 
-        {/* Overview card */}
+        <motion.div variants={fadeIn("up", 0.05)} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-10">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-secondary font-bold text-green-600 dark:text-green-400 uppercase tracking-widest mb-3">
+            <span className="w-5 h-px bg-green-500" /> Doctoral Research
+          </span>
+          <h2 className="font-primary text-[30px] lg:text-[40px] font-bold text-slate-900 dark:text-white leading-tight">
+            PhD Research
+          </h2>
+        </motion.div>
+
+        {/* Research quote */}
         <motion.div
-          variants={fadeIn("up", 0.3)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: false, amount: 0.2 }}
-          className="bg-white/80 dark:bg-black/30 border border-slate-200 dark:border-0 rounded-2xl p-5 lg:p-7 mb-8 relative overflow-hidden shadow-sm"
+          variants={fadeIn("up", 0.1)}
+          initial="hidden" whileInView="show" viewport={{ once: true }}
+          className="relative p-5 lg:p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl mb-8"
         >
-          <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[var(--theme-color-1)] via-[var(--theme-color-2)] to-[#406aff]"></div>
+          <div className="absolute left-0 top-4 bottom-4 w-1 bg-gradient-to-b from-green-500 to-emerald-400 rounded-r-full" />
+          <div className="flex items-start gap-3 pl-3">
+            <FaQuoteLeft className="text-green-400 dark:text-green-600 text-[18px] flex-shrink-0 mt-1" />
+            <p className="font-primary text-[14px] lg:text-[16px] text-green-800 dark:text-green-300 italic leading-relaxed">
+              The essence of mathematics lies in its freedom — and scheduling problems, colored by graph theory, unlock a beautiful intersection of combinatorics and machine intelligence.
+            </p>
+            <FaQuoteRight className="text-green-400 dark:text-green-600 text-[18px] flex-shrink-0 self-end mb-1" />
+          </div>
+        </motion.div>
 
-          <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="text-[10px] font-primary text-slate-800 dark:text-white tracking-widest uppercase bg-slate-200 dark:bg-white/10 border border-slate-300 dark:border-0 rounded-full px-3 py-0.5">
-                  In Progress · 2022–Present
-                </span>
-                <span className="text-[10px] font-primary text-accent tracking-widest uppercase bg-[#059669]/10 border border-[#059669]/20 dark:bg-[#B809C3]/10 dark:border-[#B809C3]/20 rounded-full px-3 py-0.5 animate-pulse">
-                  Manuscript in Preparation
-                </span>
+        {/* Main card + progress */}
+        <motion.div
+          variants={fadeIn("up", 0.15)}
+          initial="hidden" whileInView="show" viewport={{ once: true }}
+          className="flex flex-col lg:flex-row gap-6 mb-8"
+        >
+          {/* Overview card */}
+          <div className="flex-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 lg:p-8 shadow-sm">
+            <div className="h-1 w-16 bg-gradient-to-r from-green-500 to-emerald-400 rounded-full mb-5" />
+
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="text-[11px] font-secondary font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1">
+                2022 – Present
+              </span>
+              <span className="text-[11px] font-secondary font-semibold text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full px-3 py-1">
+                ● Manuscript in Preparation
+              </span>
+            </div>
+
+            <h3 className="font-primary text-[18px] lg:text-[22px] font-bold text-slate-900 dark:text-white leading-snug mb-4">
+              Optimizing Scheduling Problems using Vertex Coloring and Machine Learning
+            </h3>
+
+            <p className="font-secondary text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed mb-5 text-justify">
+              This doctoral research integrates graph-theoretic modeling with machine learning optimization. Vertex coloring provides the mathematical foundation for encoding scheduling constraints, while ML enhances resource allocation — bridging combinatorial mathematics and computational intelligence.
+            </p>
+
+            {/* Research keywords — marquee on mobile, wrap on desktop */}
+            <div className="mb-5">
+              <p className="font-secondary text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Keywords</p>
+              {/* Mobile: auto-scroll marquee */}
+              <div className="sm:hidden overflow-hidden">
+                <div className="marquee-track flex gap-2 w-max">
+                  {[...keywords, ...keywords].map((k, i) => (
+                    <span key={i} className="flex-shrink-0 font-secondary text-[10px] font-medium text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full px-2.5 py-0.5">
+                      {k}
+                    </span>
+                  ))}
+                </div>
               </div>
-
-              <h3 className="text-[18px] lg:text-[24px] font-primary font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-900 dark:from-white dark:to-gray-300 leading-snug mb-3 tracking-wide">
-                Optimizing Scheduling Problems using Vertex Coloring and Machine Learning
-              </h3>
-
-              <p className="text-[12px] lg:text-[14px] text-slate-600 dark:text-white/80 leading-relaxed mb-5 text-justify">
-                This doctoral research integrates graph-theoretic modeling of scheduling problems with machine
-                learning approaches to optimization and decision-making. Vertex coloring provides the
-                mathematical foundation for encoding scheduling constraints, while machine learning enhances
-                the optimization and resource-allocation process — bridging combinatorial mathematics and
-                computational intelligence.
-              </p>
-
-              <div className="flex items-start gap-2 text-[11px] text-gray-400">
-                <FaFlask className="text-accent text-[12px] mt-0.5 flex-shrink-0" />
-                <span>
-                  Supervised by{" "}
-                  <span className="text-slate-600 dark:text-white/80 font-semibold">Dr. Muhammad Naseem</span>
-                  {" "}— Associate Professor & Chairperson, Dept. of Software Engineering, SSUET
-                </span>
+              {/* Desktop: flex-wrap */}
+              <div className="hidden sm:flex flex-wrap gap-1.5">
+                {keywords.map((k) => (
+                  <span key={k} className="font-secondary text-[10px] font-medium text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full px-2.5 py-0.5">
+                    {k}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Progress tracker */}
-            <div className="lg:w-[230px] flex-shrink-0 bg-white/90 dark:bg-black/40 backdrop-blur-md rounded-xl p-4 border border-slate-200 dark:border-0 shadow-[0_0_15px_rgba(255,86,246,0.05)]">
-              <p className="text-[10px] font-primary text-slate-500 dark:text-white/60 uppercase tracking-widest mb-4">Research Progress</p>
-              <div className="space-y-3">
-                {phases.map((phase, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className={`mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-[9px] font-bold ${
-                      phase.status === "done"     ? "bg-accent/15 text-accent border border-accent/40" :
-                      phase.status === "active"   ? "bg-[#b936ee]/15 text-[#b936ee] border border-[#b936ee]/40 animate-pulse" :
-                                                    "bg-white/10 text-white/40 border border-slate-300 dark:border-0"
-                    }`}>
-                      {phase.status === "done" ? "✓" : phase.status === "active" ? "●" : "○"}
-                    </div>
-                    <div>
-                      <p className={`text-[11px] font-primary leading-snug ${
-                        phase.status === "done"   ? "text-slate-600 dark:text-white/80" :
-                        phase.status === "active" ? "text-slate-800 dark:text-white font-semibold" :
-                                                    "text-white/40"
-                      }`}>{phase.label}</p>
-                      <p className="text-[9px] text-slate-400 dark:text-white/50 leading-tight mt-0.5">{phase.detail}</p>
-                    </div>
+            <div className="flex items-start gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+              <span className="text-green-500 text-[14px] flex-shrink-0 mt-0.5">◈</span>
+              <p className="font-secondary text-[12px] text-slate-500 dark:text-slate-400">
+                Supervised by{" "}
+                <span className="font-semibold text-slate-700 dark:text-slate-300">Dr. Muhammad Naseem</span>
+                {" "}— Associate Professor & Chairperson, Dept. of Software Engineering, SSUET
+              </p>
+            </div>
+          </div>
+
+          {/* Progress tracker — animated */}
+          <div ref={progressRef} className="lg:w-[240px] flex-shrink-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+            {/* Card header stripe */}
+            <div className="h-1.5 bg-gradient-to-r from-green-500 to-emerald-400" />
+            <div className="p-4">
+              <p className="font-secondary text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">
+                Research Progress
+              </p>
+
+              {/* Step tracker */}
+              <div className="relative">
+                {/* Background connector line */}
+                <div className="absolute left-[11px] top-3 bottom-3 w-0.5 bg-slate-100 dark:bg-slate-700" />
+
+                <div className="space-y-0">
+                  {phases.map((phase, i) => {
+                    const nameDelay  = 0.2 + i * 0.15;   // names: 0.20, 0.35, 0.50, 0.65, 0.80
+                    const detailDelay = 1.1 + i * 0.4;   // details: 1.1, 1.5, 1.9, 2.3, 2.7
+                    return (
+                      <div key={i} className="relative flex items-start gap-3 pb-3 last:pb-0">
+                        {/* Coloured connector — draws in with its step's detail */}
+                        {i < phases.findIndex((p) => p.status === "upcoming") && i < phases.length - 1 && (
+                          <motion.div
+                            className="absolute left-[11px] top-6 h-4 w-0.5 bg-green-400 dark:bg-green-600 z-[5]"
+                            style={{ originY: 0 }}
+                            initial={{ opacity: 0, scaleY: 0 }}
+                            animate={progressInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+                            transition={{ delay: detailDelay, duration: 0.3 }}
+                          />
+                        )}
+
+                        {/* Step circle — pops in with detail */}
+                        <motion.div
+                          className={`relative z-10 flex-shrink-0 w-[23px] h-[23px] rounded-full flex items-center justify-center text-[9px] font-bold shadow-sm ${
+                            phase.status === "done"
+                              ? "bg-green-500 text-white"
+                              : phase.status === "active"
+                                ? "bg-white dark:bg-slate-800 border-2 border-green-500 text-green-600 dark:text-green-400"
+                                : "bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 text-slate-400 dark:text-slate-500"
+                          }`}
+                          initial={{ opacity: 0, scale: 0.3 }}
+                          animate={progressInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.3 }}
+                          transition={{ delay: detailDelay, duration: 0.3, type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                          {phase.status === "done" ? "✓" : phase.status === "active" ? "●" : i + 1}
+                        </motion.div>
+
+                        <div className="flex-1 pt-0.5">
+                          {/* Name — slides in first (unlock effect) */}
+                          <motion.p
+                            className={`font-secondary text-[12px] font-semibold leading-snug ${
+                              phase.status === "upcoming"
+                                ? "text-slate-400 dark:text-slate-600"
+                                : phase.status === "active"
+                                  ? "text-slate-900 dark:text-white"
+                                  : "text-slate-600 dark:text-slate-400"
+                            }`}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={progressInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                            transition={{ delay: nameDelay, duration: 0.35, ease: "easeOut" }}
+                          >
+                            {phase.label}
+                          </motion.p>
+                          {/* Detail — fades in after circle */}
+                          <motion.p
+                            className={`font-secondary text-[10px] mt-0.5 ${
+                              phase.status === "active"
+                                ? "text-green-600 dark:text-green-400 font-medium"
+                                : "text-slate-400 dark:text-slate-500"
+                            }`}
+                            initial={{ opacity: 0 }}
+                            animate={progressInView ? { opacity: 1 } : { opacity: 0 }}
+                            transition={{ delay: detailDelay + 0.15, duration: 0.3 }}
+                          >
+                            {phase.detail}
+                          </motion.p>
+                        </div>
+
+                        {phase.status === "active" && (
+                          <motion.span
+                            className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse mt-2"
+                            initial={{ opacity: 0 }}
+                            animate={progressInView ? { opacity: 1 } : { opacity: 0 }}
+                            transition={{ delay: detailDelay + 0.1, duration: 0.3 }}
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Overall progress bar — fills last */}
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="font-secondary text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                    Overall
+                  </p>
+                  <span className="font-primary text-[14px] font-bold text-green-600 dark:text-green-400">
+                    {progressInView ? <CountUp start={0} end={65} duration={1.2} delay={3.1} /> : 0}%
+                  </span>
+                </div>
+                <div className="h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full relative"
+                    style={{
+                      width: progressInView ? "65%" : "0%",
+                      transition: "width 1.2s cubic-bezier(0.4, 0, 0.2, 1) 3.1s",
+                    }}
+                  >
+                    <div className="absolute inset-0 shimmer-bar rounded-full" />
                   </div>
-                ))}
+                </div>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="font-secondary text-[9px] text-slate-400 dark:text-slate-500">2022</p>
+                  <p className="font-secondary text-[9px] text-slate-400 dark:text-slate-500">Defense</p>
+                </div>
               </div>
             </div>
           </div>
         </motion.div>
 
         {/* Research focus areas */}
-        <motion.div
-          variants={staggerContainer(0.08, 0.15)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: false, amount: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-        >
+        <h3 className="font-secondary text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+          <span className="w-4 h-px bg-slate-300 dark:bg-slate-600" /> Research Focus Areas
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {researchAreas.map((area, i) => (
             <motion.div
               key={i}
-              variants={scaleIn(0.07 * i)}
-              className="group relative bg-white/80 dark:bg-white/[0.03] backdrop-blur-md border border-slate-200 dark:border-0 rounded-xl p-3 lg:p-4 hover:-translate-y-1.5 hover:bg-white/90 dark:hover:bg-white/[0.06] hover:shadow-[0_8px_30px_rgba(var(--theme-shadow-rgb),0.1)] transition-all duration-500 overflow-hidden"
+              variants={fadeIn("up", 0.05 * i)}
+              initial="hidden" whileInView="show" viewport={{ once: true }}
+              className="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-md hover:border-green-300 dark:hover:border-green-700 transition-all duration-200"
             >
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[var(--theme-color-1)] to-[var(--theme-color-2)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#059669]/10 to-[#0891B2]/10 dark:from-[#ff56f6]/10 dark:to-[#b936ee]/10 flex items-center justify-center flex-shrink-0 group-hover:from-[#059669]/20 group-hover:to-[#0891B2]/20 dark:group-hover:from-[#ff56f6]/20 dark:group-hover:to-[#b936ee]/20 transition-all duration-500 border border-slate-100 dark:border-white/5">
-                  <span className="text-accent text-[16px] drop-shadow-[0_0_5px_rgba(var(--theme-shadow-rgb),0.5)]">◈</span>
+              {/* Left accent bar */}
+              <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-green-500 to-emerald-400 group-hover:from-emerald-400 group-hover:to-teal-400 transition-all duration-300" />
+              <div className="p-4 pl-5">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h4 className="font-secondary text-[13px] font-bold text-slate-800 dark:text-white leading-snug group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors duration-200">
+                    {area.label}
+                  </h4>
+                  <span className="flex-shrink-0 font-primary text-[22px] font-bold text-slate-100 dark:text-slate-800 leading-none select-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <div>
-                  <h4 className="text-[13px] lg:text-[14px] font-primary font-bold text-slate-700 dark:text-white/90 mb-1.5 leading-snug group-hover:text-slate-800 dark:text-white transition-colors duration-300">{area.label}</h4>
-                  <p className="text-[11px] lg:text-[12px] text-slate-500 dark:text-white/50 leading-relaxed group-hover:text-slate-600 dark:group-hover:text-white/70 transition-colors duration-300">{area.desc}</p>
-                </div>
+                <p className="font-secondary text-[11.5px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                  {area.desc}
+                </p>
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );

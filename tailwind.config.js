@@ -2,11 +2,12 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
+  important: true,
   theme: {
     fontFamily: {
-      primary: 'Orbitron',
-      secondary: 'Rajdhani',
-      tertiary: 'Aldrich',
+      primary: ['Lora', 'Georgia', 'serif'],
+      secondary: ['Inter', 'system-ui', 'sans-serif'],
+      tertiary: ['Inter', 'system-ui', 'sans-serif'],
     },
     container: {
       padding: {
@@ -21,13 +22,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#0a0a0a',
+        primary: '#0f172a',
         accent: 'var(--accent)',
-      },
-      backgroundImage: {
-        site: "url('./assets/site-bg.jpg')",
-        about: "url('./components/image.png')",
-        services: "url('./assets/what.png')",
       },
     },
   },

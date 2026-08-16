@@ -28,13 +28,13 @@ const ScrollToTop = () => {
             width: "38px",
             height: "38px",
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #10D9A0, #6366F1)",
+            background: "linear-gradient(135deg, #16a34a, #059669)",
             border: "none",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "0 0 16px rgba(16,217,160,0.45)",
+            boxShadow: "0 0 16px rgba(22,163,74,0.40)",
           }}
           aria-label="Scroll to top"
         >
