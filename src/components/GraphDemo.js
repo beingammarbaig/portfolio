@@ -141,7 +141,7 @@ export default function GraphDemo() {
     if (animating || !verts.length) return;
     resetColors();
     setAnimating(true);
-    const { colorMap: cm, order, chromatic } = greedyColor(verts, edgs, optimize);
+    const { colorMap: cm, order } = greedyColor(verts, edgs, optimize);
 
     const step = i => {
       if (i >= order.length) {
