@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import Experience from './components/Experience';
 import ScrollToTop from './components/ScrollToTop';
 import Research from './components/Research';
+import AskFariha from './components/AskFariha';
 import { FaEnvelope, FaUniversity, FaMapMarkerAlt, FaDownload, FaPhone } from 'react-icons/fa';
 
 const App = () => {
@@ -128,6 +129,7 @@ const App = () => {
       </footer>
 
       <ScrollToTop />
+      <AskFariha />
     </div>
   );
 };

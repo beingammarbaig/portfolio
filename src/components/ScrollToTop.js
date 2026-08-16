@@ -22,8 +22,8 @@ const ScrollToTop = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{
             position: "fixed",
-            bottom: "72px",
-            right: "16px",
+            bottom: "24px",
+            left: "16px",
             zIndex: 9998,
             width: "38px",
             height: "38px",
