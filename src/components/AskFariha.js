@@ -516,7 +516,7 @@ const AskFariha = () => {
             transition={{ type: "spring", stiffness: 280, damping: 22 }}
             onClick={() => setIsOpen(true)}
             title="Ask Fariha AI"
-            className="fixed bottom-4 right-4 z-40 group flex flex-col items-center cursor-pointer border-none bg-transparent p-0"
+            className="fixed bottom-[85px] md:bottom-4 right-4 z-40 group flex flex-col items-center cursor-pointer border-none bg-transparent p-0"
           >
             {/* Glow platform under the robot */}
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-14 h-4 bg-green-400/30 blur-md rounded-full" />
@@ -552,8 +552,8 @@ const AskFariha = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
-            className="fixed bottom-6 right-2 sm:right-4 z-50 w-[calc(100vw-1rem)] sm:w-[390px] flex flex-col bg-white dark:bg-slate-950 rounded-2xl overflow-hidden"
-            style={{ maxHeight: "min(90vh, 610px)", boxShadow: "0 32px 64px -12px rgba(0,0,0,0.30), 0 0 0 1px rgba(0,0,0,0.06)" }}
+            className="fixed bottom-[85px] md:bottom-6 right-2 sm:right-4 z-50 w-[calc(100vw-1rem)] sm:w-[390px] flex flex-col bg-white dark:bg-slate-950 rounded-2xl overflow-hidden"
+            style={{ maxHeight: "min(calc(100vh - 100px), 610px)", boxShadow: "0 32px 64px -12px rgba(0,0,0,0.30), 0 0 0 1px rgba(0,0,0,0.06)" }}
           >
             {/* ── Header ── */}
             <div className="flex-shrink-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">

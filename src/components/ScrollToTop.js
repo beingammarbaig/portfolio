@@ -20,20 +20,11 @@ const ScrollToTop = () => {
           exit={{ opacity: 0, scale: 0.7 }}
           transition={{ duration: 0.25 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed z-[9998] flex items-center justify-center cursor-pointer border-none rounded-full right-4 bottom-[24px] md:left-4 md:right-auto"
           style={{
-            position: "fixed",
-            bottom: "24px",
-            left: "16px",
-            zIndex: 9998,
             width: "38px",
             height: "38px",
-            borderRadius: "50%",
             background: "linear-gradient(135deg, #16a34a, #059669)",
-            border: "none",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
             boxShadow: "0 0 16px rgba(22,163,74,0.40)",
           }}
           aria-label="Scroll to top"
