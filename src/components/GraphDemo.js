@@ -63,6 +63,7 @@ export default function GraphDemo() {
   const [highlighted, setHighlighted] = useState(null);
   const [algoStep, setAlgoStep] = useState(null);
   const [result, setResult] = useState(null);
+  const [selectedModel, setSelectedModel] = useState("welsh-powell");
   const [newVId, setNewVId] = useState(null);
   const [nextVId, setNextVId] = useState(7);
   const [nextEId, setNextEId] = useState(9);
@@ -163,12 +164,6 @@ export default function GraphDemo() {
     step(0);
   }, [animating]); // eslint-disable-line
 
-  const quickDemo = () => {
-    setVertices(PRESET.vertices); setEdges(PRESET.edges);
-    setColorMap({}); setResult(null); setEdgeFrom(null); setAlgoStep(null);
-    setNextVId(7); setNextEId(9); extraIdx.current = 0; setMode("none");
-    setTimeout(() => runAlgo(true), 80);
-  };
   const loadPreset = () => {
     setVertices(PRESET.vertices); setEdges(PRESET.edges);
     resetColors(); setNextVId(7); setNextEId(9); extraIdx.current = 0;
@@ -259,7 +254,7 @@ export default function GraphDemo() {
               <div className="p-6 pb-2 flex-1">
                 <div className="flex flex-col">
                   {[
-                    { n: "01", title: "Load or build a graph", body: "Use Quick Demo for the preset, or add courses and conflict edges manually." },
+                    { n: "01", title: "Load or build a graph", body: "Use Load Example for the preset, or add courses and conflict edges manually." },
                     { n: "02", title: "Mark shared-student conflicts", body: "Two courses sharing enrolled students cannot run in the same exam slot." },
                     { n: "03", title: "Run the algorithm", body: "Watch vertices receive colours one by one as the algorithm processes them." },
                     { n: "04", title: "Read the schedule", body: "Each colour is a distinct time slot. No two connected courses ever clash." },
@@ -305,29 +300,27 @@ export default function GraphDemo() {
             {/* Top Toolbar: Algo & Quick Demo */}
             <div className="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-green-100 dark:border-green-900/40 shadow-sm p-3 px-5">
 
-              <div className="flex items-center flex-wrap gap-4">
-                <button onClick={quickDemo} disabled={animating}
-                  className="flex items-center gap-2 font-secondary text-[12px] font-bold text-white bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 rounded-lg px-4 py-2 transition-all shadow-sm shadow-green-600/20 disabled:opacity-50">
-                  <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M3 2L12 7L3 12V2Z" fill="white" /></svg>
-                  Quick Demo
-                </button>
+              <div className="flex flex-col md:flex-row md:items-center w-full gap-4">
 
-                <span className="w-px h-5 bg-slate-200 dark:bg-slate-700 hidden sm:block" />
-
-                <div className="flex items-center gap-2.5">
-                  <span className="font-secondary text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider hidden sm:block">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto flex-1">
+                  <span className="font-secondary text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider hidden md:block">
                     {isComplete ? "Run Again:" : "Model Selection:"}
                   </span>
-                  <div className="flex bg-slate-50 dark:bg-slate-800/50 p-1 rounded-lg border border-slate-100 dark:border-slate-700/50">
-                    <button onClick={() => runAlgo(false)} disabled={animating || !vertices.length}
-                      className="font-secondary text-[11.5px] font-semibold px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-all disabled:opacity-50">
+                  <div className="flex bg-slate-50 dark:bg-slate-800/50 p-1 rounded-lg border border-slate-100 dark:border-slate-700/50 flex-1 sm:flex-none">
+                    <button onClick={() => setSelectedModel("greedy")} disabled={animating}
+                      className={`flex-1 sm:flex-none justify-center font-secondary text-[11.5px] font-semibold px-3 py-2 sm:py-1.5 rounded-md transition-all disabled:opacity-50 ${selectedModel === "greedy" ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"}`}>
                       Greedy
                     </button>
-                    <button onClick={() => runAlgo(true)} disabled={animating || !vertices.length}
-                      className="font-secondary text-[11.5px] font-semibold px-3 py-1.5 rounded-md text-green-700 dark:text-green-400 hover:bg-white dark:hover:bg-slate-700 hover:text-green-600 dark:hover:text-green-300 transition-all disabled:opacity-50 flex items-center gap-1.5">
-                      Welsh-Powell <span className="bg-green-500 w-1.5 h-1.5 rounded-full" />
+                    <button onClick={() => setSelectedModel("welsh-powell")} disabled={animating}
+                      className={`flex-1 sm:flex-none justify-center font-secondary text-[11.5px] font-semibold px-3 py-2 sm:py-1.5 rounded-md transition-all disabled:opacity-50 flex items-center gap-1.5 ${selectedModel === "welsh-powell" ? "bg-white dark:bg-slate-700 text-green-700 dark:text-green-400 shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"}`}>
+                      Welsh-Powell <span className={`w-1.5 h-1.5 rounded-full ${selectedModel === "welsh-powell" ? "bg-green-500" : "bg-slate-300 dark:bg-slate-600"}`} />
                     </button>
                   </div>
+                  <button onClick={() => runAlgo(selectedModel === "welsh-powell")} disabled={animating || !vertices.length}
+                    className="w-full sm:w-auto justify-center font-secondary text-[12px] font-bold text-white bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 rounded-lg px-5 py-2.5 sm:py-2 transition-all shadow-sm shadow-green-600/20 disabled:opacity-50 flex items-center gap-2">
+                    <svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M0 0L10 6L0 12V0Z" fill="currentColor"/></svg>
+                    Run
+                  </button>
                 </div>
               </div>
 
@@ -605,43 +598,23 @@ export default function GraphDemo() {
                     )}
                   </svg>
 
-                  {/* Completion banner */}
-                  {isComplete && !animating && (
-                    <div className="absolute top-4 inset-x-0 flex justify-center pointer-events-none"
-                      style={{ animation: "bannerIn 0.35s cubic-bezier(0.22,1,0.36,1) both" }}>
-                      <div className="inline-flex items-center gap-3 bg-white dark:bg-slate-900
-                                    border border-slate-200 dark:border-slate-700 rounded-xl
-                                    px-5 py-2.5 shadow-lg shadow-slate-200/60 dark:shadow-slate-900/60">
-                        <div className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />
-                        <span className="font-secondary text-[12.5px] font-semibold text-slate-700 dark:text-slate-200">
-                          Schedule complete
-                        </span>
-                        <span className="w-px h-4 bg-slate-200 dark:bg-slate-700" />
-                        <span className="font-secondary text-[12.5px] font-bold text-green-600 dark:text-green-400">
-                          {result?.chromatic} time slot{result?.chromatic !== 1 ? "s" : ""}
-                        </span>
-                        <span className="font-secondary text-[11px] text-slate-400 dark:text-slate-500">
-                          {result?.method}
-                        </span>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Slot legend */}
                 {isComplete && (
-                  <div className="px-5 py-3 border-t border-green-100 dark:border-green-900/40
-                                flex flex-wrap gap-x-5 gap-y-1.5
+                  <div className="px-5 py-4 sm:py-3 border-t border-green-100 dark:border-green-900/40
+                                flex flex-col sm:flex-row sm:flex-wrap gap-x-5 gap-y-2
                                 bg-green-50/50 dark:bg-green-900/10">
-                    <span className="self-center font-secondary text-[9.5px] font-bold
-                                   text-green-700 dark:text-green-500 uppercase tracking-wider">Legend</span>
+                    <span className="font-secondary text-[9.5px] font-bold text-green-700 dark:text-green-500 uppercase tracking-wider mb-1 sm:mb-0 sm:self-center">
+                      Legend
+                    </span>
                     {Object.keys(schedule).sort((a, b) => +a - +b).map(ci => {
                       const slot = SLOTS[+ci];
                       return (
-                        <div key={ci} className="flex items-center gap-1.5">
+                        <div key={ci} className="flex items-center gap-2 sm:gap-1.5">
                           <div className="w-2 h-2 rounded-full flex-shrink-0"
                             style={{ backgroundColor: slot?.color }} />
-                          <span className="font-secondary text-[10.5px] text-slate-600 dark:text-slate-300">
+                          <span className="font-secondary text-[11px] sm:text-[10.5px] text-slate-600 dark:text-slate-300">
                             <span className="font-semibold" style={{ color: slot?.color }}>
                               {slot?.name}
                             </span>
