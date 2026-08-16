@@ -62,7 +62,6 @@ export default function GraphDemo() {
   const [animating, setAnimating] = useState(false);
   const [highlighted, setHighlighted] = useState(null);
   const [algoStep, setAlgoStep] = useState(null);
-  const [result, setResult] = useState(null);
   const [selectedModel, setSelectedModel] = useState("welsh-powell");
   const [newVId, setNewVId] = useState(null);
   const [nextVId, setNextVId] = useState(7);
@@ -80,7 +79,7 @@ export default function GraphDemo() {
   useEffect(() => () => clearTimeout(animTimer.current), []);
 
   const resetColors = () => {
-    setColorMap({}); setResult(null); setHighlighted(null); setAlgoStep(null);
+    setColorMap({}); setHighlighted(null); setAlgoStep(null);
   };
   const toggleMode = m => { setMode(p => p === m ? "none" : m); setEdgeFrom(null); };
 
@@ -148,7 +147,6 @@ export default function GraphDemo() {
       if (i >= order.length) {
         setHighlighted(null);
         setAlgoStep(null);
-        setResult({ chromatic, method: optimize ? "Welsh-Powell" : "Greedy" });
         setAnimating(false);
         return;
       }
